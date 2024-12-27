@@ -200,14 +200,15 @@ aside#other-things {
   body {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 5% 2fr 1fr;
+    grid-template-rows: 0.5fr 2fr 1fr;
     grid-template-areas:
       "top top top top top"
       "main main main aside aside"
       "footer footer footer footer footer";
     column-gap: 30px;
     row-gap: 20px;
-    padding: 0 5%;
+    height: 100vh;
+    padding: 2%;
   }
   header {
     grid-area: top;
@@ -237,6 +238,7 @@ aside#other-things {
     display: none;
   }
   section#desktop-menu {
+    align-items: center;
     display: flex;
     gap: 30px;
     & > p {
