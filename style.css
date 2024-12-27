@@ -1,0 +1,255 @@
+@font-face {
+  font-family: Inter-normal;
+  src: url(assets/fonts/static/Inter-Regular.ttf);
+}
+@font-face {
+  font-family: Inter-bold;
+  src: url(assets/fonts/static/Inter-Bold.ttf);
+}
+@font-face {
+  font-family: Inter-x-bold;
+  src: url(assets/fonts/static/Inter-ExtraBold.ttf);
+}
+
+:root {
+  --grayish-blue: hsl(233, 8%, 79%);
+  --dark-grayish-blue: hsl(236, 13%, 42%);
+  --very-dark-blue: hsl(240, 100%, 5%);
+  --off-white: hsl(36, 100%, 99%);
+  --soft-orange: hsl(35, 77%, 62%);
+  --soft-red: hsl(5, 85%, 63%);
+}
+
+* {
+  box-sizing: border-box;
+}
+h1,
+button {
+  font-family: Inter-x-bold, sans-serif;
+}
+h2,
+h3 {
+  font-family: Inter-bold, serif;
+}
+p {
+  font-size: 16px;
+  font-family: Inter-normal, serif;
+}
+
+section#desktop-menu {
+  display: none;
+}
+dialog:-internal-dialog-in-top-layer {
+  inset-block-start: 0px;
+  inset-block-end: 0px;
+  max-width: calc(100%);
+  max-height: calc(100%);
+  user-select: text;
+}
+dialog {
+  border: none;
+  inset: unset;
+  position: absolute;
+  right: 0;
+  height: 100vh;
+  width: 65vw;
+  &::backdrop {
+    background-color: black;
+    opacity: 0.5;
+  }
+  & > img {
+    float: right;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  & p {
+    font-size: 23px;
+    &:first-of-type {
+      margin-top: 90px;
+    }
+  }
+}
+html,
+body {
+  margin: 0;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  padding: 3% 2%;
+  position: relative;
+}
+
+header nav {
+  display: flex;
+  height: 30px;
+  justify-content: space-between;
+  & > img#open-menu {
+    width: 50px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+main {
+  margin: 30px 0;
+  & h1 {
+    font-size: 40px;
+    margin: 0;
+  }
+  & > img {
+    width: 100%;
+  }
+  & p {
+    color: var(--dark-grayish-blue);
+    line-height: 25px;
+    margin: 10px 0 20px;
+  }
+  & button {
+    background-color: var(--soft-red);
+    color: var(--very-dark-blue);
+    font-variant: small-caps;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 4px;
+    border: none;
+    padding: 10px 25px;
+    &:hover {
+      cursor: pointer;
+      color: var(--off-white);
+      background-color: var(--very-dark-blue);
+    }
+  }
+}
+
+aside#new-things {
+  background-color: var(--very-dark-blue);
+  margin: 10px 0;
+  padding: 0 4%;
+  & h2 {
+    color: var(--soft-orange);
+  }
+  & div {
+    border-bottom: solid 2px var(--dark-grayish-blue);
+    & > h3 {
+      color: var(--off-white);
+      &:hover {
+        cursor: pointer;
+        color: var(--soft-orange);
+      }
+    }
+    & > p {
+      color: var(--dark-grayish-blue);
+    }
+  }
+  & div:last-child {
+    border-bottom: none;
+  }
+}
+
+aside#other-things {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+  gap: 30px;
+  & > section {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 30% 60%;
+    & > img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+    & > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+
+  & h2 {
+    color: var(--soft-red);
+    font-size: 40px;
+    margin: 0;
+  }
+  & h3 {
+    color: var(--very-dark-blue);
+    font-weight: bold;
+    margin: 0;
+    &:hover {
+      cursor: pointer;
+      color: var(--soft-red);
+    }
+  }
+  & p {
+    color: var(--dark-grayish-blue);
+    line-height: 25px;
+    margin: 0;
+  }
+}
+
+@media (min-width: 990px) {
+  html {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  body {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 5% 2fr 1fr;
+    grid-template-areas:
+      "top top top top top"
+      "main main main aside aside"
+      "footer footer footer footer footer";
+    column-gap: 30px;
+    row-gap: 20px;
+    padding: 0 5%;
+  }
+  header {
+    grid-area: top;
+  }
+  main {
+    grid-area: main;
+    margin: 0;
+    & section#description {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  aside#new-things {
+    grid-area: aside;
+    margin: 0;
+  }
+  aside#other-things {
+    grid-area: footer;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    & img {
+      height: 100%;
+    }
+  }
+  img#open-menu {
+    display: none;
+  }
+  section#desktop-menu {
+    display: flex;
+    gap: 30px;
+    & > p {
+      &:hover {
+        cursor: pointer;
+        color: var(--soft-red);
+      }
+    }
+  }
+}
+
+@media (min-width: 1300px) {
+  body {
+    width: 80%;
+  }
+}
